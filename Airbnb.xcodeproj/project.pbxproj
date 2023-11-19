@@ -11,6 +11,8 @@
 		E5A74F362B0A455000845F6D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A74F352B0A455000845F6D /* ContentView.swift */; };
 		E5A74F382B0A455000845F6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5A74F372B0A455000845F6D /* Assets.xcassets */; };
 		E5A74F3B2B0A455000845F6D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5A74F3A2B0A455000845F6D /* Preview Assets.xcassets */; };
+		E5A74F4E2B0A4BE700845F6D /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A74F4D2B0A4BE700845F6D /* ExploreView.swift */; };
+		E5A74F522B0A51B300845F6D /* ListingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A74F512B0A51B300845F6D /* ListingItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		E5A74F352B0A455000845F6D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E5A74F372B0A455000845F6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5A74F3A2B0A455000845F6D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E5A74F4D2B0A4BE700845F6D /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		E5A74F512B0A51B300845F6D /* ListingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 		E5A74F462B0A4AF500845F6D /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				E5A74F4D2B0A4BE700845F6D /* ExploreView.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 		E5A74F472B0A4AFC00845F6D /* Listings */ = {
 			isa = PBXGroup;
 			children = (
+				E5A74F512B0A51B300845F6D /* ListingItemView.swift */,
 			);
 			path = Listings;
 			sourceTree = "<group>";
@@ -233,7 +239,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5A74F522B0A51B300845F6D /* ListingItemView.swift in Sources */,
 				E5A74F362B0A455000845F6D /* ContentView.swift in Sources */,
+				E5A74F4E2B0A4BE700845F6D /* ExploreView.swift in Sources */,
 				E5A74F342B0A455000845F6D /* AirbnbApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
