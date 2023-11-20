@@ -9,13 +9,26 @@ import SwiftUI
 import MapKit
 
 struct ListingDetailView: View {
-    
+
     @Environment(\.dismiss) var dismiss
+    let listing: Listing
+    @State private var cameraPosistion: MapCameraPosition
+    
+    init(listing: Listing){
+        self.listing = listing
+        
+        let region = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 25.7602, longitude: -80.1959),
+            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+            )
+        
+        self._cameraPosistion = State(initialValue: .region(region))
+    }
     
     var body: some View {
         ScrollView {
             ZStack(alignment: .topLeading) {
-                ListingImageCarouselView()
+                ListingImageCarouselView(listing: listing)
                     .frame(height: 320)
                 
                 Button {
@@ -89,16 +102,16 @@ struct ListingDetailView: View {
             Divider()
             
             VStack(alignment: .leading, spacing: 16) {
-                ForEach(0 ..< 2) { feature in
+                ForEach(listing.features) { feature in
                     HStack(spacing: 12) {
-                        Image(systemName: "medal")
+                        Image(systemName: feature.imageName)
                         
                         VStack(alignment: .leading) {
-                            Text("SuperHost")
+                            Text(feature.title)
                                 .font(.footnote)
                                 .fontWeight(.semibold)
                             
-                            Text("Superhosts are experience, highly rated hots who are commited to providing great stars for guests")
+                            Text(feature.subtitle)
                                 .font(.footnote)
                                 .foregroundStyle(.gray)
                         }
@@ -116,7 +129,7 @@ struct ListingDetailView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 16) {
-                        ForEach(1 ..< 5) { bedroom in
+                        ForEach(1 ... listing.numberOfBedrooms, id: \.self) { bedroom in
                             VStack {
                                 Image(systemName: "bed.double")
                                 
@@ -141,12 +154,12 @@ struct ListingDetailView: View {
                 Text("Wath this palce offers")
                     .font(.headline)
                 
-                ForEach(0 ..< 5) { feature in
+                ForEach(listing.amenities) { amenity in
                     HStack {
-                        Image(systemName: "wifi")
+                        Image(systemName: amenity.imageName)
                             .frame(width:32)
                         
-                        Text("Wifi")
+                        Text(amenity.title)
                             .font(.footnote)
                         
                         Spacer()
@@ -161,7 +174,7 @@ struct ListingDetailView: View {
                 Text("where you'll be")
                     .font(.headline)
                 
-                Map()
+                Map(position: $cameraPosistion)
                     .frame(height:200)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
@@ -177,7 +190,7 @@ struct ListingDetailView: View {
                 
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("$500")
+                        Text("$\(listing.pricePerNight)")
                             .font(.subheadline)
                             .fontWeight(.semibold)
                         
@@ -212,5 +225,5 @@ struct ListingDetailView: View {
 }
 
 #Preview {
-    ListingDetailView()
+    ListingDetailView(listing: DeveloperPreview.shared.listings[0])
 }
