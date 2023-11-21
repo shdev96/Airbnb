@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @State private var showLoginForm = false
+    
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 32) {
@@ -20,6 +22,7 @@ struct ProfileView: View {
                 
                 Button {
                     print("Log in")
+                    self.showLoginForm.toggle()
                 } label: {
                     Text("Log in")
                         .foregroundStyle(.white)
@@ -28,6 +31,9 @@ struct ProfileView: View {
                         .frame(width: 360, height: 48)
                         .background(.pink)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
+                }
+                .sheet(isPresented: $showLoginForm){
+                    LoginView()
                 }
                 
                 HStack {

@@ -9,7 +9,6 @@ import Foundation
 
 class ExploreService {
     func fetchListings() async throws -> [Listing] {
-        print(DeveloperPreview.shared.listings.count)
         return DeveloperPreview.shared.listings
     }
 }

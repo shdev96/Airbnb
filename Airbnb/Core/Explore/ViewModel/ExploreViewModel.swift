@@ -17,6 +17,7 @@ class ExploreViewModel: ObservableObject {
         Task { await fetchListings() }
     }
     
+    @MainActor
     func fetchListings() async {
         do {
             self.listings = try await service.fetchListings()
